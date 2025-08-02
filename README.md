@@ -8,27 +8,37 @@
 
 ## 🚀 Quickstart
 
-1. **Connect to Wi-Fi**
+### Initial Installation
+
+1. **Connect to the Internet** (in the live environment)
    ```bash
    nmcli device wifi connect "SSID_NAME" password "PASSWORD"
    ```
-2. **Clone**
+2. **Fetch the `arch-symphony.json` Profile**
    ```bash
-   git clone https://github.com/aethrox/arch-symphony.git
-   cd arch-symphony
+   curl -o /tmp/arch-symphony.json \
+     https://raw.githubusercontent.com/aethrox/arch-symphony/main/arch-symphony.json
    ```
-3. **Fetch Config & Scripts**
+3. **Run the Automated Installer**
    ```bash
-   wget -O /tmp/profile.json \
-     https://raw.githubusercontent.com/aethrox/arch-symphony/main/config/profile.json
-   wget -O /tmp/post-install.sh \
+   archinstall --config /tmp/arch-symphony.json
+   ```
+
+---
+
+### Post-Installation
+
+4. **Fetch & Execute the Post-Install Script**
+   ```bash
+   curl -o /tmp/post-install.sh \
      https://raw.githubusercontent.com/aethrox/arch-symphony/main/scripts/post-install.sh
+   
    chmod +x /tmp/post-install.sh
-   ```
-4. **Install & Bootstrap**
-   ```bash
-   archinstall --config /tmp/profile.json
+   
    arch-chroot /mnt /tmp/post-install.sh
+   ```
+5. **Reboot into Your New System**
+   ```bash
    reboot
    ```
 
