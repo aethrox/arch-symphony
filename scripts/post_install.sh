@@ -64,25 +64,31 @@ ufw enable
 
 echo "[STEP 6] UFW firewall enabled"
 
-# 7. Copy Zsh configuration files
-echo "[STEP 7] Updating Zsh configuration"
+# 7. Fetch and copy Zsh configuration files
+echo "[STEP 7] Downloading and updating Zsh configuration"
 runuser -u aethrox -- bash -c '
-  cp /home/aethrox/arch-symphony/zsh/.zshrc /home/aethrox/.config/zsh/.zshrc && \
-  cp /home/aethrox/arch-symphony/zsh/.p10k.zsh /home/aethrox/.config/zsh/.p10k.zsh && \
+  curl --fail --location \
+    https://raw.githubusercontent.com/aethrox/arch-symphony/main/scripts/zsh/.zshrc \
+    -o /home/aethrox/.config/zsh/.zshrc && \
+  curl --fail --location \
+    https://raw.githubusercontent.com/aethrox/arch-symphony/main/scripts/zsh/.p10k.zsh \
+    -o /home/aethrox/.config/zsh/.p10k.zsh && \
   chown -R aethrox:aethrox /home/aethrox/.config/zsh
 '
-
 echo "[STEP 7] Zsh configuration updated"
 
-# 8. Copy Hyprland configuration file
-echo "[STEP 8] Copying Hyprland configuration"
+# 8. Fetch and copy Hyprland configuration files
+echo "[STEP 8] Downloading and copying Hyprland configuration"
 runuser -u aethrox -- bash -c '
-  cp /home/aethrox/arch-symphony/config/keybindings.conf /home/aethrox/.config/hypr/keybindings.conf && \
-  cp /home/aethrox/arch-symphony/config/userprefs.conf /home/aethrox/.config/hypr/userprefs.conf && \
+  curl --fail --location \
+    https://raw.githubusercontent.com/aethrox/arch-symphony/main/config/keybindings.conf \
+    -o /home/aethrox/.config/hypr/keybindings.conf && \
+  curl --fail --location \
+    https://raw.githubusercontent.com/aethrox/arch-symphony/main/config/userprefs.conf \
+    -o /home/aethrox/.config/hypr/userprefs.conf && \
   chown -R aethrox:aethrox /home/aethrox/.config/hypr
 '
-
-echo "[STEP 8] Hyprland configuration copied"
+echo "[STEP 8] Hyprland configuration fetched and copied"
 
 # 9. Disable root SSH login
 echo "[STEP 9] Disabling root SSH login"
