@@ -19,12 +19,12 @@
    ```
 3. **Fetch the `arch-symphony.json` Profile**
    ```bash
-   curl -o /tmp/arch-symphony.json \
-     https://raw.githubusercontent.com/aethrox/arch-symphony/main/profile.json
+   cd /tmp
+   curl -O https://raw.githubusercontent.com/aethrox/arch-symphony/main/{user_configuration,user_credentials}.json
    ```
 4. **Run the Automated Installer**
    ```bash
-   archinstall --config /tmp/profile.json
+   archinstall --config user_configuration.json --creds user_credentials.json
    ```
 
 ---
