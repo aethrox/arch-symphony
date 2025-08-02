@@ -78,6 +78,7 @@ echo "[STEP 7] Zsh configuration updated"
 echo "[STEP 8] Copying Hyprland configuration"
 runuser -u aethrox -- bash -c '
   cp /home/aethrox/arch-symphony/config/keybindings.conf /home/aethrox/.config/hypr/keybindings.conf && \
+  cp /home/aethrox/arch-symphony/config/userprefs.conf /home/aethrox/.config/hypr/userprefs.conf && \
   chown -R aethrox:aethrox /home/aethrox/.config/hypr
 '
 
