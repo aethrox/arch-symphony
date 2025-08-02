@@ -38,7 +38,6 @@ ufw enable
 # 4. Copy Zsh configuration files
 echo "[STEP 4] Updating Zsh configuration"
 runuser -u aethrox -- bash -c '
-  mkdir -p /home/aethrox/.config/zsh && \
   cp /home/aethrox/arch-symphony/zsh/.zshrc /home/aethrox/.config/zsh/.zshrc && \
   cp /home/aethrox/arch-symphony/zsh/.p10k.zsh /home/aethrox/.config/zsh/.p10k.zsh && \
   chown -R aethrox:aethrox /home/aethrox/.config/zsh
@@ -47,7 +46,6 @@ runuser -u aethrox -- bash -c '
 # 5. Copy Hyprland configuration file
 echo "[STEP 5] Copying Hyprland configuration"
 runuser -u aethrox -- bash -c '
-  mkdir -p /home/aethrox/.config/hypr && \
   cp /home/aethrox/arch-symphony/config/keybindings.conf /home/aethrox/.config/hypr/keybindings.conf && \
   chown -R aethrox:aethrox /home/aethrox/.config/hypr
 '
