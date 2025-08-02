@@ -1,0 +1,84 @@
+{
+  "profile_name": "my-arch-setup",
+
+  "hostname": "aethrox",
+  "timezone": "Europe/Istanbul",
+  "locale": "tr_TR.UTF-8",
+  "keyboard_layout": "tr",
+
+  "mirror": "default",
+
+  "disk": [
+    {
+      "device": "/dev/sda",
+      "wipe": true,
+      "partitions": [
+        { "mountpoint": "/boot", "size": "512M", "format": "fat32" },
+        { "mountpoint": "/",     "size": "100%FREE", "format": "ext4" }
+      ]
+    }
+  ],
+
+  "root_password": "!1nnr3d@gmail",
+
+  "users": [
+    {
+      "name": "aethrox",
+      "password": "43thr0x00",
+      "groups": ["wheel","audio","video","storage"],
+      "shell": "/bin/bash"
+    }
+  ],
+
+  "packages": [
+    "base",
+    "linux",
+    "linux-zen",
+    "linux-firmware",
+    "vim",
+    "sudo",
+    "networkmanager",
+    "bash-completion",
+    "efibootmgr",
+    "git",
+    "base-devel",
+    "intel-ucode",
+    "reflector",
+    "pacman-contrib",
+    "openssh"
+  ],
+
+  "bootloader": {
+    "type": "grub",
+    "install_device": "/dev/sda"
+  },
+
+  "services": [
+    "NetworkManager.service",
+    "sshd.service"
+  ],
+
+  "post_install": [
+    /* Create swap file */
+    "arch-chroot /mnt fallocate -l 4G /swapfile",
+    "arch-chroot /mnt chmod 600 /swapfile",
+    "arch-chroot /mnt mkswap /swapfile",
+    "arch-chroot /mnt swapon /swapfile",
+    "arch-chroot /mnt bash -c 'echo \"/swapfile none swap defaults 0 0\" >> /etc/fstab'",
+
+    /* Update mirrorlist and enable parallel downloads */
+    "arch-chroot /mnt reflector --latest 10 --sort rate --save /etc/pacman.d/mirrorlist",
+    "arch-chroot /mnt sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 10/' /etc/pacman.conf",
+
+    /* Ensure git and base-devel are installed */
+    "arch-chroot /mnt pacman -S --noconfirm --needed git base-devel",
+
+    /* Install AUR helper yay */
+    "arch-chroot /mnt bash -c 'sudo -u aethrox git clone https://aur.archlinux.org/yay.git /home/aethrox/yay'",
+    "arch-chroot /mnt bash -c 'cd /home/aethrox/yay && sudo -u aethrox makepkg -si --noconfirm'",
+
+    /* Disable root SSH login */
+    "arch-chroot /mnt sed -i 's/#PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config",
+    "arch-chroot /mnt systemctl restart sshd"
+  ]
+}
