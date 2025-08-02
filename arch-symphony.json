@@ -79,6 +79,11 @@
 
     /* Disable root SSH login */
     "arch-chroot /mnt sed -i 's/#PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config",
-    "arch-chroot /mnt systemctl restart sshd"
+    "arch-chroot /mnt systemctl restart sshd",
+
+    /* HyDE (Hyperland pre-config) setup */
+    "arch-chroot /mnt pacman -Sy --noconfirm --needed git base-devel",
+    "arch-chroot /mnt sudo -u aethrox bash -c 'cd /home/aethrox && git clone ...'",
+    "arch-chroot /mnt /home/aethrox/HyDE/Scripts/install.sh"
   ]
 }
