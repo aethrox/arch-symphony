@@ -11,17 +11,20 @@
 ### Initial Installation
 
 1. **Connect to the Internet** (in the live environment)
-   ```bash
-   nmcli device wifi connect "SSID_NAME" password "PASSWORD"
    ```
-2. **Fetch the `arch-symphony.json` Profile**
+   iwctl device list
+   iwctl station DEVICE scan
+   iwctl station DEVICE get-networks
+   iwctl --passphrase=PASSPHRASE station DEVICE connect SSID
+   ```
+3. **Fetch the `arch-symphony.json` Profile**
    ```bash
    curl -o /tmp/arch-symphony.json \
-     https://raw.githubusercontent.com/aethrox/arch-symphony/main/arch-symphony.json
+     https://raw.githubusercontent.com/aethrox/arch-symphony/main/profile.json
    ```
-3. **Run the Automated Installer**
+4. **Run the Automated Installer**
    ```bash
-   archinstall --config /tmp/arch-symphony.json
+   archinstall --config /tmp/profile.json
    ```
 
 ---
@@ -52,26 +55,6 @@
 - **Performance**: Fast mirror selection + parallel downloads
 - **Swapfile**: 4 GB reserved swap
 - **AUR Helper**: Bootstraps `yay`
-
----
-
-## 🛠️ Customize
-
-- **Profile**: Tweak `config/profile.json` (hostname, disks, packages)
-- **Scripts**: Extend `scripts/post-install.sh` with your own tasks
-- **Kernels**: Swap in `linux-lts`, `linux-hardened`, or others
-
----
-
-## 🤝 Contribute
-
-Pull requests and issues welcome! Ideas:
-
-- New post-install modules
-- Security hardening
-- Additional kernel or service profiles
-
-Please read [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ---
 
