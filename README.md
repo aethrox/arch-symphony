@@ -48,7 +48,7 @@ cd ~/HyDE/Scripts
 4. **Fetch & Execute the Post-Install Script**
    ```bash
    curl -o /tmp/post-install.sh \
-     https://raw.githubusercontent.com/aethrox/arch-symphony/main/scripts/post-install.sh
+     https://raw.githubusercontent.com/aethrox/arch-symphony/main/scripts/post_install.sh
    chmod +x /tmp/post-install.sh
    arch-chroot /mnt /tmp/post-install.sh
    ```
