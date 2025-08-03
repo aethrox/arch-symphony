@@ -49,8 +49,8 @@ cd ~/HyDE/Scripts
    ```bash
    curl -o /tmp/post-install.sh \
      https://raw.githubusercontent.com/aethrox/arch-symphony/main/scripts/post_install.sh
-   chmod +x /tmp/post-install.sh
-   arch-chroot /mnt /tmp/post-install.sh
+   
+   ./post_install.sh
    ```
 5. **Reboot into Your New System**
    ```bash
