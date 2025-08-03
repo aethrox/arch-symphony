@@ -53,6 +53,10 @@ runuser -u aethrox -- bash -c '
 '
 echo "[STEP 5] Zsh configuration updated"
 
+runuser -u aethrox -- bash -c '
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+'
+
 # 6. Fetch and copy Hyprland configuration files
 echo "[STEP 6] Downloading and copying Hyprland configuration"
 runuser -u aethrox -- bash -c '
