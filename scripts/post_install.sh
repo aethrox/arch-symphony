@@ -69,9 +69,10 @@ echo "[STEP 6] Hyprland configuration fetched and copied"
 # 7. Install official repository packages
 echo "[STEP 7] Installing official repository packages"
 OFFICIAL_PKGS=(
-  nano btop thunderbird bitwarden libreoffice vlc croc iptables ufw
-  glow jq ranger translate-shell mosh ncdu imagemagick pandoc
-  gh speedtest-cli bat ripgrep duf
+  nano btop thunderbird bitwarden libreoffice-fresh
+  vlc croc iptables ufw glow jq ranger translate-shell
+  mosh ncdu imagemagick pandoc-cli github-cli speedtest-cli
+  bat ripgrep duf
 )
 sudo pacman -S --noconfirm --needed "${OFFICIAL_PKGS[@]}"
 
