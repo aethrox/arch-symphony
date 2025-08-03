@@ -91,7 +91,6 @@ AUR_PKGS=(
 YAY_OPTS=(
   --noconfirm    # onay sorusunu atla
   --needed       # zaten kuruluysa geç
-  --nocleanmenu  # temizleme onayını atla
 )
 
 runuser -u "$AUR_USER" -- bash -lc "yay -S ${YAY_OPTS[*]} ${AUR_PKGS[*]}" 
