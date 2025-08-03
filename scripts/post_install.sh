@@ -13,7 +13,7 @@ echo "[INFO] Starting Arch Symphony post-install tasks"
 
 # 1. Update mirrorlist and enable parallel downloads
 echo "[STEP 1] Optimizing mirrors and pacman parallel downloads"
-reflector --latest 10 --sort rate --save /etc/pacman.d/mirrorlist
+reflector --protocol https --latest 10 --sort rate --save /etc/pacman.d/mirrorlist
 sed -i 's/^#ParallelDownloads =/ParallelDownloads =/' /etc/pacman.conf
 
 echo "[STEP 1] Mirrorlist updated and parallel downloads enabled"
