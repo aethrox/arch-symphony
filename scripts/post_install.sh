@@ -66,6 +66,9 @@ runuser -u aethrox -- bash -c '
 '
 echo "[STEP 6] Hyprland configuration fetched and copied"
 
+echo "[FIX] Removing conflicting 'code' package from community repo"
+pacman -Rns --noconfirm code || true
+
 # 7. Install official repository packages
 echo "[STEP 7] Installing official repository packages"
 OFFICIAL_PKGS=(
