@@ -44,10 +44,10 @@ echo "[STEP 4] Root SSH login disabled"
 echo "[STEP 5] Downloading and updating Zsh configuration"
 runuser -u aethrox -- bash -c '
   curl --fail --location \
-    https://raw.githubusercontent.com/aethrox/arch-symphony/main/scripts/zsh/.zshrc \
+    https://raw.githubusercontent.com/aethrox/arch-symphony/main/zsh/.zshrc \
     -o /home/aethrox/.config/zsh/.zshrc && \
   curl --fail --location \
-    https://raw.githubusercontent.com/aethrox/arch-symphony/main/scripts/zsh/.p10k.zsh \
+    https://raw.githubusercontent.com/aethrox/arch-symphony/main/zsh/.p10k.zsh \
     -o /home/aethrox/.config/zsh/.p10k.zsh && \
   chown -R aethrox:aethrox /home/aethrox/.config/zsh
 '
