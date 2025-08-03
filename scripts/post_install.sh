@@ -42,20 +42,6 @@ echo "[STEP 4] Root SSH login disabled"
 
 # 5. Fetch and copy Zsh configuration files
 echo "[STEP 5] Downloading and updating Zsh configuration"
-runuser -u aethrox -- bash -c '
-  curl --fail --location \
-    https://raw.githubusercontent.com/aethrox/arch-symphony/main/zsh/.zshrc \
-    -o /home/aethrox/.config/zsh/.zshrc && \
-  curl --fail --location \
-    https://raw.githubusercontent.com/aethrox/arch-symphony/main/zsh/.p10k.zsh \
-    -o /home/aethrox/.config/zsh/.p10k.zsh && \
-  chown -R aethrox:aethrox /home/aethrox/.config/zsh
-'
-echo "[STEP 5] Zsh configuration updated"
-
-runuser -u aethrox -- bash -c '
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-'
 
 # 6. Fetch and copy Hyprland configuration files
 echo "[STEP 6] Downloading and copying Hyprland configuration"
@@ -63,9 +49,6 @@ runuser -u aethrox -- bash -c '
   curl --fail --location \
     https://raw.githubusercontent.com/aethrox/arch-symphony/main/config/keybindings.conf \
     -o /home/aethrox/.config/hypr/keybindings.conf && \
-  curl --fail --location \
-    https://raw.githubusercontent.com/aethrox/arch-symphony/main/config/userprefs.conf \
-    -o /home/aethrox/.config/hypr/userprefs.conf && \
   chown -R aethrox:aethrox /home/aethrox/.config/hypr
 '
 echo "[STEP 6] Hyprland configuration fetched and copied"
