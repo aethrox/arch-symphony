@@ -91,7 +91,6 @@ AUR_PKGS=(
 YAY_OPTS=(
   --noconfirm    # onay sorusunu atla
   --needed       # zaten kuruluysa geç
-  --nodiffmenu   # değişiklik diff menüsünü atla
   --nocleanmenu  # temizleme onayını atla
 )
 
